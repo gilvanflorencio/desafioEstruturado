@@ -4,12 +4,18 @@
 // Includes
 include('functions/functions.php');
 
-// Carregando usuários
-$produtos = carregaProdutos();
+// Carregando Produtos
+$produto = carregaProdutos();
+$usuario = carregaUsuarios();
 
-// Mostrar usuários
+// Mostrar Produtos
 echo "<pre>";
-print_r($produtos);
+print_r($produto);
+echo "</pre>";
+
+// Mostrar Produtos
+echo "<pre>";
+print_r($usuario);
 echo "</pre>";
 
 ?>

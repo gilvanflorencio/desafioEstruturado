@@ -1,5 +1,8 @@
 <?php
 
+//includes
+include('../functions/functions.php');
+
 $nome = "";
 $email = "";
 $senha = "";
@@ -17,6 +20,22 @@ if ($_POST) {
 
    if (strlen($nome) < 6) {
        $nomeOk = false;
+   }
+   
+   if(strlen($email) < 7){
+      $emailOk = false;
+   }
+
+   if($senha !== $confirmacao || strlen($senha) < 6){
+    $senhaOk = false;
+   }
+
+   if($nomeOk && $senhaOk){
+     //Salvando Usuario Novo
+     addUsuario($nome, $email ,$senha);
+     
+     //Redirecionando isiario para a lista de usuarios
+     header('location: list-usuarios.php');
    }
 
 }
@@ -92,11 +111,13 @@ li{
      </label>
     <label for="email">
        Email:
-    <input type="email" name="email" id="email">
+    <input type="email" name="email" id="email" value="<?= $email ?>">
+    <?= $emailOk?'' : '<span class="erro">Email Ínvalido!</span>' ?>
    </label>
   <label for="senha">
     Senha:
-    <input type="password" name="senha" id="senha"> 
+    <input type="password" name="senha" id="senha">
+    <?= $senhaOk? '':'<span class="erro">Senha Inválida</span>' ?> 
    </label>
    <label for="confirmacao">
     Confirmação:
