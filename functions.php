@@ -1,11 +1,15 @@
 <?php
 
+
+
+
+
 //              PRODUTOS
 function carregaProdutos(){
 /* Carrega os Produtos  do arquivo produtos.json*/
-echo ('Produto adiciona com sucesso');
+//echo ('Produto adiciona com sucesso');
 //ler o arquivo para uma variavel string
-$strJson = file_get_contents("../produtos/produtos.json");
+$strJson = file_get_contents("produtos.json");
 
 // transformar a string em array assoc (json_decode)
 $produtos = json_decode($strJson, true);
@@ -18,8 +22,15 @@ function addProdutos($nomeProduto,$preco,$foto,$descricaoProduto){
    //$carrega produtos usando a funcao anterior
    $produtos = carregaProdutos();
 
+   //adiciona ID produto
+   if(empty($produtos)){
+    $id = 1;
+   }else{
+       $id = sizeof($produtos) + 1;
+   }
+
    //cria um array assiciativo com os dados passados por parametro
-   $novo = ['nomeProduto'=>$nomeProduto,'preco'=>$preco,'foto'=>$foto,'descricaoProduto'=>$descricaoProduto];
+   $novo = ['id'=> $id,'nomeProduto'=>$nomeProduto,'preco'=>$preco,'foto'=>$foto,'descricaoProduto'=>$descricaoProduto];
 
    //adiciona $novo ao final do array
    $produtos[] = $novo;
@@ -29,7 +40,7 @@ function addProdutos($nomeProduto,$preco,$foto,$descricaoProduto){
    //se tiver, salva no arquivo produtos.json
    if($stringJson){
        //salvar a string json no arquivo produtos.json
-       file_put_contents('../produtos/produtos.json', $stringJson);
+       file_put_contents('produtos.json', $stringJson);
    }
 }
 
@@ -37,9 +48,9 @@ function addProdutos($nomeProduto,$preco,$foto,$descricaoProduto){
 
 function carregaUsuarios(){
     /* Carrega os Produtos  do arquivo produtos.json*/
-echo ('Usuarios adiciona com sucesso');
+//echo ('Usuarios adiciona com sucesso');
 //ler o arquivo para uma variavel string
-$strJson = file_get_contents("../usuarios/usuarios.json");
+$strJson = file_get_contents("usuarios.json");
 
 // transformar a string em array assoc (json_decode)
 $usuarios = json_decode($strJson, true);
@@ -63,7 +74,7 @@ $usuarios = json_decode($strJson, true);
     // se tiver, salva no arquivo usuarios.json
     if ($stringJson) {
         //salvar a string json no arquivo usuarios.json
-        file_put_contents('../usuarios/usuarios.json', $stringJson);
+        file_put_contents('usuarios.json', $stringJson);
     }
 }
 

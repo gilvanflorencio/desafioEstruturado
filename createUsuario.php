@@ -1,7 +1,7 @@
 <?php
 
 //includes
-include('../functions/functions.php');
+include('functions.php');
 
 $nome = "";
 $email = "";

@@ -2,21 +2,22 @@
 
 
 // Includes
-include('functions/functions.php');
+include('functions.php');
 
 // Carregando Produtos
-$produto = carregaProdutos();
+$produtos = carregaProdutos();
 $usuario = carregaUsuarios();
 
-// Mostrar Produtos
+/* Mostrar Produtos
 echo "<pre>";
-print_r($produto);
+print_r($produtos);
 echo "</pre>";
 
 // Mostrar Produtos
 echo "<pre>";
 print_r($usuario);
 echo "</pre>";
+*/
 
 ?>
 
@@ -35,7 +36,7 @@ echo "</pre>";
 </head>
 <body>
 
-<table class="table table-hover table-dark">
+<table class="table table-hover table-default">
   <thead>
     <tr>
       <th scope="col">Nº</th>
@@ -44,15 +45,18 @@ echo "</pre>";
       <th scope="col">Descricao Produto</th>
     </tr>
   </thead>
+
   <tbody>
-     <tr>
-   
-      <th scope="row">1</th>
-      <td>  </td>
-      <td> </td>
-      <td>  </td>
-      
+    <?php foreach($produtos as $produto): ?>
+     <tr>   
+      <th scope="row"><?= $produto['id'] ?> </th>
+      <td> <?= $produto['nomeProduto'] ?> </td>
+      <td> <?= $produto['preco'] ?></td>
+      <td> <?= $produto['descricaoProduto'] ?> </td> 
+      <td><a class="btn btn-primary" href="showProduto.php?=<?= $produto['id'] ?>" role="button">Ver Mais</a></td>   
     </tr>
+
+    <?php endforeach; ?>
    </tbody>
 </table>
     

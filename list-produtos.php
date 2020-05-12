@@ -1,7 +1,7 @@
 <?php 
 
 // Includes
-include('../functions/functions.php');
+include('functions.php');
 
 
 // Carregando produtos
