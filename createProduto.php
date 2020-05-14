@@ -2,6 +2,12 @@
 <?php
 //includes
 include('functions.php');
+/*
+session_start();
+if (!$_SESSION) {
+  header('location:login.php');
+}
+*/
 
  //valores Padrão
  $nomeProduto =  "";
@@ -23,16 +29,16 @@ $descricaoProduto = $_POST['descricaoProduto'];
 //verificar se o $_FILES esta vindo
       if($_FILES){
 
-      //Separando informacopes uteis do $_FILES
+      //Separando informacoes uteis do $_FILES
       $tmpName = $_FILES['foto']['tmp_name'];
       $fileName = uniqid(). '-' . $_FILES['foto']['name'];
       $error = $_FILES['foto']['error'];
 
   //salvar o arquivo numa pasta do meu sistema
-  move_uploaded_file($tmpName, '../img/usuarios'.$fileName);
+  move_uploaded_file($tmpName, 'img/'.$fileName);
 
         //salvar o nome do arquivo em $imagem
-         $imagem = '../img/usuarios/'.$fileName;
+         $imagem = 'img/'.$fileName;
          }else{
           $imagem = null;
        }

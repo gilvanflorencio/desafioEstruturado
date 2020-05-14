@@ -4,9 +4,16 @@
 // Includes
 include('functions.php');
 
+/*
+session_start();
+if (!$_SESSION) {
+  header('location:login.php');
+}
+*/
+
 // Carregando Produtos
 $produtos = carregaProdutos();
-$usuario = carregaUsuarios();
+
 
 /* Mostrar Produtos
 echo "<pre>";

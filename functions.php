@@ -1,21 +1,11 @@
 <?php
 
 
-
-
-
-//              PRODUTOS
+//        CARREGA PRODUTOS
 function carregaProdutos(){
-/* Carrega os Produtos  do arquivo produtos.json*/
-//echo ('Produto adiciona com sucesso');
-//ler o arquivo para uma variavel string
-$strJson = file_get_contents("produtos.json");
-
-// transformar a string em array assoc (json_decode)
-$produtos = json_decode($strJson, true);
-
-//retornar o array assoc
- return $produtos;
+   $strJson = file_get_contents("produtos.json");
+     $produtos = json_decode($strJson, true);
+   return $produtos;
 }
 
 function addProdutos($nomeProduto,$preco,$foto,$descricaoProduto){
@@ -44,18 +34,11 @@ function addProdutos($nomeProduto,$preco,$foto,$descricaoProduto){
    }
 }
 
-//                      Usuarios 
+//             CARREGA USUARIOS
 
 function carregaUsuarios(){
-    /* Carrega os Produtos  do arquivo produtos.json*/
-//echo ('Usuarios adiciona com sucesso');
-//ler o arquivo para uma variavel string
-$strJson = file_get_contents("usuarios.json");
-
-// transformar a string em array assoc (json_decode)
-$usuarios = json_decode($strJson, true);
-
-//retornar o array assoc
+ $strJson = file_get_contents("usuarios.json");
+  $usuarios = json_decode($strJson, true);
  return $usuarios;
 }
 
@@ -77,5 +60,17 @@ $usuarios = json_decode($strJson, true);
         file_put_contents('usuarios.json', $stringJson);
     }
 }
+
+
+function produtoPorId($id){
+    $produtos = carregaProdutos();
+       foreach($produtos as $produto){
+           if($produto["id"] == $id){
+              return $produto;
+           }
+       }
+      return false;
+ }
+ 
 
 ?>

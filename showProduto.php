@@ -1,8 +1,25 @@
 <?php
+include('functions.php');
+include('index');
+//include ('index.php');
+//include ('produtos.json');
 
+/*
+session_start();
+if (!$_SESSION) {
+  header('location:login.php');
+}
+*/
+$id = $_GET['id'];
+echo "$id";
+if($id){
+$produto = produtoPorId($id);
+
+echo "<pre>";
+var_dump($produto);
+echo "</pre>";
+}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,9 +54,17 @@ border: 2px solid  #bfbfbf;
 
 </head>
    <body>
+      <article>
+      <button class="btn btn-primary"><a href="index.php"><= Voltar para a lista de produtos</a></button>
+      </article>
 <main>
-
-</main>
     
+    <h1> <a href="<?= $produto['id'] ?>"></a> </h1>
+    <img src="<?= $produto['foto'] ?>" alt="<?= $produto['nomeProduto'] ?>">
+    <span>  <?= $produto['preco'] ?> </span>
+    <span> <?= $produto['descricaoProduto'] ?> </span>
+    
+</main>  
+
    </body>
 </html>

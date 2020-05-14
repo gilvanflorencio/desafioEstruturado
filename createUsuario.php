@@ -3,6 +3,13 @@
 //includes
 include('functions.php');
 
+/*
+session_start();
+if (!$_SESSION) {
+  header('location:login.php');
+}
+*/
+
 $nome = "";
 $email = "";
 $senha = "";
@@ -34,9 +41,7 @@ if ($_POST) {
      //Salvando Usuario Novo
      addUsuario($nome, $email ,$senha);
      
-     //Redirecionando isiario para a lista de usuarios
-     header('location: list-usuarios.php');
-   }
+     }
 
 }
 
