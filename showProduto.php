@@ -1,6 +1,6 @@
 <?php
 include('functions.php');
-include('index');
+
 //include ('index.php');
 //include ('produtos.json');
 
@@ -10,15 +10,10 @@ if (!$_SESSION) {
   header('location:login.php');
 }
 */
+
 $id = $_GET['id'];
-echo "$id";
-if($id){
 $produto = produtoPorId($id);
 
-echo "<pre>";
-var_dump($produto);
-echo "</pre>";
-}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +21,11 @@ echo "</pre>";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <title>SHOW PRODUTOS</title>
 
     <style>
 * {
@@ -54,12 +53,15 @@ border: 2px solid  #bfbfbf;
 
 </head>
    <body>
-      <article>
-      <button class="btn btn-primary"><a href="index.php"><= Voltar para a lista de produtos</a></button>
+    <article>
+      <button class="btn btn-outline-secondary ">
+      <a href="index.php">
+      << Voltar para a lista de produtos
+       </a></button>
       </article>
 <main>
     
-    <h1> <a href="<?= $produto['id'] ?>"></a> </h1>
+    <h1> <a href="<?= $produto['nomeProduto'] ?>"></a> </h1>
     <img src="<?= $produto['foto'] ?>" alt="<?= $produto['nomeProduto'] ?>">
     <span>  <?= $produto['preco'] ?> </span>
     <span> <?= $produto['descricaoProduto'] ?> </span>
