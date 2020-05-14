@@ -12,6 +12,7 @@ if (!$_SESSION) {
 */
 
 $id = $_GET['id'];
+
 $produto = produtoPorId($id);
 
 ?>
@@ -61,7 +62,7 @@ border: 2px solid  #bfbfbf;
       </article>
 <main>
     
-    <h1> <a href="<?= $produto['nomeProduto'] ?>"></a> </h1>
+    <h1> <?= $produto['nomeProduto'] ?> </h1>
     <img src="<?= $produto['foto'] ?>" alt="<?= $produto['nomeProduto'] ?>">
     <span>  <?= $produto['preco'] ?> </span>
     <span> <?= $produto['descricaoProduto'] ?> </span>

@@ -60,7 +60,8 @@ echo "</pre>";
       <td> <?= $produto['nomeProduto'] ?> </td>
       <td> <?= $produto['preco'] ?></td>
       <td> <?= $produto['descricaoProduto'] ?> </td> 
-      <td><a class="btn btn-primary" href="showProduto.php?=<?= $produto['id'] ?>" role="button">Ver Mais</a></td>   
+      <td><a href="showProduto.php?id=<?= $produto['id'] ?>">Ver Mais</a></td>
+      <!--<td><a href="teste.php?id=<?= $produto['id'] ?>">Ver Mais</a></td>  -->  
     </tr>
 
     <?php endforeach; ?>

@@ -71,6 +71,5 @@ function produtoPorId($id){
        }
       return false;
  }
- 
 
 ?>
